@@ -4,11 +4,23 @@ import { useQuery } from "react-query"
 const getSuperHeroes = () => {
   return axios.get("http://localhost:4000/superheroes1")
 }
+
+const onSuccess = () => {
+  console.log("server ran successfully ")
+}
+const onError = () => {
+  console.log("server did not run successfully :( ")
+}
+
 export const RQSuperHeroesPage = () => {
 
   const { isLoading, data, isError, error } = useQuery(
     "superHeros",
-    getSuperHeroes
+    getSuperHeroes, {
+    onSuccess,
+    onError
+  }
+
   )
   if (isLoading) {
     return <h2>Loading...</h2>
