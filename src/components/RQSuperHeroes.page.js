@@ -2,14 +2,14 @@ import axios from "axios"
 import { useQuery } from "react-query"
 
 const getSuperHeroes = () => {
-  return axios.get("http://localhost:4000/superheroes1")
+  return axios.get("http://localhost:4000/superheroes")
 }
 
-const onSuccess = () => {
-  console.log("server ran successfully ")
+const onSuccess = (data) => {
+  console.log("server ran successfully ", data)
 }
-const onError = () => {
-  console.log("server did not run successfully :( ")
+const onError = (error) => {
+  console.log("server did not run successfully :( ", error)
 }
 
 export const RQSuperHeroesPage = () => {
