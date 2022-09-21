@@ -1,27 +1,25 @@
-import axios from "axios"
-import { useQuery } from "react-query"
 
-const getSuperHeroes = () => {
-  return axios.get("http://localhost:4000/superheroes")
-}
-
-const onSuccess = (data) => {
-  console.log("server ran successfully ", data)
-}
-const onError = (error) => {
-  console.log("server did not run successfully :( ", error)
-}
+import { useState } from "react"
+import { useSuperheroes } from "../hooks/useSuperheroes"
 
 export const RQSuperHeroesPage = () => {
+  const [intervalTime, setIntervaltTime] = useState(3000)
+  const onSuccess = (data) => {
 
-  const { isLoading, data, isError, error } = useQuery(
-    "superHeros",
-    getSuperHeroes, {
-    onSuccess,
-    onError
+    if (data.length === 4) {
+      console.log("successfully added")
+      setIntervaltTime(false)
+    }
+  }
+  const onError = (error) => {
+    if (error) {
+      setIntervaltTime(false)
+    }
   }
 
-  )
+  const { isLoading, data, isError, error } = useSuperheroes(onSuccess, onError)
+
+
   if (isLoading) {
     return <h2>Loading...</h2>
   }
@@ -30,8 +28,9 @@ export const RQSuperHeroesPage = () => {
   }
   return <>
     <h2>React Query Super Heroes Page</h2>
-    {data?.data.map(hero => {
+    {/* {data?.data.map(hero => {
       return <p>{hero.name}</p>
-    })}
+    })} */}
+    {data.map((name) => <p>{name}</p>)}
   </>
 }
