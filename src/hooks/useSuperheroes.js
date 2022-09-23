@@ -1,21 +1,15 @@
 import axios from "axios"
 import { useQuery } from "react-query"
 const getSuperHeroes = () => {
-    return axios.get("http://localhost:4000/superheroes")
+    return fetch("../../db.json")
+        .then(res => res.json)
+        .then(data => console.log(data))
+        .catch(err => console.log(err.message))
 }
-export const useSuperheroes = (onSuccess, onError) => {
-
+console.log(getSuperHeroes)
+export const useSuperheroes = () => {
     return useQuery(
         "super-heroes",
-        getSuperHeroes, {
-        onSuccess,
-        onError,
-        select: (data) => {
-            const superheroNames = data.data.map((superheroName) => {
-                return superheroName.name
-            })
-            return superheroNames
-        }
-    }
+        getSuperHeroes
     )
 }

@@ -1,25 +1,11 @@
-
-import { useState } from "react"
+import { Link } from "react-router-dom"
 import { useSuperheroes } from "../hooks/useSuperheroes"
 
 export const RQSuperHeroesPage = () => {
-  const [intervalTime, setIntervaltTime] = useState(3000)
-  const onSuccess = (data) => {
 
-    if (data.length === 4) {
-      console.log("successfully added")
-      setIntervaltTime(false)
-    }
-  }
-  const onError = (error) => {
-    if (error) {
-      setIntervaltTime(false)
-    }
-  }
+  const { isLoading, data, isError, error } = useSuperheroes()
 
-  const { isLoading, data, isError, error } = useSuperheroes(onSuccess, onError)
-
-
+  console.log(data)
   if (isLoading) {
     return <h2>Loading...</h2>
   }
@@ -28,9 +14,10 @@ export const RQSuperHeroesPage = () => {
   }
   return <>
     <h2>React Query Super Heroes Page</h2>
-    {/* {data?.data.map(hero => {
-      return <p>{hero.name}</p>
-    })} */}
-    {data.map((name) => <p>{name}</p>)}
+    {data.map(hero => {
+      return (
+        <Link to={`/superheroes/${hero.id}`}>{hero.name}</Link>
+      )
+    })}
   </>
 }
