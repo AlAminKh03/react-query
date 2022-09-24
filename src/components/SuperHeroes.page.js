@@ -6,7 +6,7 @@ export const SuperHeroesPage = () => {
   const [data, setData] = useState([])
 
   useEffect(() => {
-    axios.get('../../db.json').then(res => {
+    axios.get('http://localhost:4000/superheroes').then(res => {
       setData(res.data)
       setIsLoading(false)
     })
@@ -20,7 +20,9 @@ export const SuperHeroesPage = () => {
     <>
       <h2>Super Heroes Page</h2>
       {data.map(hero => {
-        return <div>{hero.name}</div>
+        return (
+          <p>{hero.name}</p>
+        )
       })}
     </>
   )
