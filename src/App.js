@@ -8,6 +8,7 @@ import { SuperHeroesPage } from './components/SuperHeroes.page'
 import RQSuperhero from './components/RQSuperhero.page'
 import ParrallelQuries from './components/ParrallelQuries.page'
 import RQdynamicParallel from './components/RQdynamicParallel.page'
+import RQDefented from './components/RQDefented.page'
 
 const queryClient = new QueryClient()
 
@@ -38,6 +39,9 @@ function App() {
             </Route>
             <Route path='/rq-dynamically-superhero'>
               <RQdynamicParallel heroIds={[1, 4]} />
+            </Route>
+            <Route path='/rq-dependent'>
+              <RQDefented email='alaminkhan@gmail.com' />
             </Route>
             <Route path='/parallelQuery'>
               <ParrallelQuries />

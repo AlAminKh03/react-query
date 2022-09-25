@@ -38,5 +38,21 @@
       "id": 4,
       "name": "Mahim"
     }
+  ],
+  "users": [
+    {
+      "id": "alaminkhan@gmail.com",
+      "channelId": "evaluation"
+    }
+  ],
+  "channels": [
+    {
+      "id": "evaluation",
+      "courses": [
+        "react",
+        "vue",
+        "angular"
+      ]
+    }
   ]
 }
