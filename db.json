@@ -20,5 +20,23 @@
       "name": "Green lantern",
       "alterEgo": "Hal jorden"
     }
+  ],
+  "brothers": [
+    {
+      "id": 1,
+      "name": "Enam"
+    },
+    {
+      "id": 2,
+      "name": "Mishal"
+    },
+    {
+      "id": 3,
+      "name": "Nabil"
+    },
+    {
+      "id": 4,
+      "name": "Mahim"
+    }
   ]
 }
