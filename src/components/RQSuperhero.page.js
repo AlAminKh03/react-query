@@ -2,17 +2,12 @@ import axios from 'axios';
 import React from 'react';
 import { useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
+import useSuperHeroData from '../hooks/useSuperHeroData';
 
 const RQSuperhero = () => {
     const { hero } = useParams()
-    console.log(hero);
 
-    const { isLoading, data, isError, error } = useQuery(
-        'singleHero',
-        () => axios.get(`http://localhost:4000/superheroes/${hero}`)
-
-    )
-    console.log(data);
+    const { isLoading, data, isError, error } = useSuperHeroData(hero)
     if (isLoading) {
         <p>Loading ....</p>
     }
