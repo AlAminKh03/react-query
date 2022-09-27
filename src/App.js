@@ -9,6 +9,8 @@ import RQSuperhero from './components/RQSuperhero.page'
 import ParrallelQuries from './components/ParrallelQuries.page'
 import RQdynamicParallel from './components/RQdynamicParallel.page'
 import RQDefented from './components/RQDefented.page'
+import PaginatedQueries from './components/PaginatedQueries.page'
+import InfintieQueries from './components/InfintieQueries.page'
 
 const queryClient = new QueryClient()
 
@@ -33,6 +35,12 @@ function App() {
           <Switch>
             <Route path='/super-heroes'>
               <SuperHeroesPage />
+            </Route>
+            <Route path='/rq-paginated'>
+              <PaginatedQueries />
+            </Route>
+            <Route path='/rq-infiniteQueries'>
+              <InfintieQueries />
             </Route>
             <Route path='/rq-super-heroes'>
               <RQSuperHeroesPage />
